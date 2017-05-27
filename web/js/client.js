@@ -23,7 +23,7 @@ const port = 3000;
 
 // let socket = SocketIOClient('http://' + ip + ':' + port);
 
-let socket = io('wss://' + ip + ':' + port);
+let socket = io('https://' + ip + ':' + port, {secure: true});
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});
 // socket.on('disconnect', function(){});
