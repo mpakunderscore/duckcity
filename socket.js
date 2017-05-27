@@ -6,7 +6,7 @@ let app = express();
 let server = http.Server(app);
 let websocket = socketio(server);
 
-const socketPort = 3000;
+const socketPort = process.env.PORT || 8080;
 
 let map = {
     users: {},

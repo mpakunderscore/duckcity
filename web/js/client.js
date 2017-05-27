@@ -23,7 +23,9 @@ const port = 3000;
 
 // let socket = SocketIOClient('http://' + ip + ':' + port);
 
-let socket = io('https://' + ip + ':' + port, {secure: true});
+// let socket = io('https://' + ip + ':' + port, {secure: true});
+let socket = io(window.location.hostname, {secure: true});
+
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});
 // socket.on('disconnect', function(){});
