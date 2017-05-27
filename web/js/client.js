@@ -15,13 +15,13 @@
 
 // let io = require('socket.io')(http);
 
-const ip = 'https://quackserver.herokuapp.com';
+const ip = 'quackserver.herokuapp.com';
 
 const port = 3000;
 
 // let socket = SocketIOClient('http://' + ip + ':' + port);
 
-let socket = io('http://' + ip + ':' + port);
+let socket = io('https://' + ip + ':' + port);
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});
 // socket.on('disconnect', function(){});
