@@ -15,7 +15,7 @@
 
 // let io = require('socket.io')(http);
 
-const ip = '92.61.69.168';
+const ip = 'https://quackserver.herokuapp.com';
 
 const port = 3000;
 
