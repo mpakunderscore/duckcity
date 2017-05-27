@@ -1,27 +1,7 @@
 
 //CLIENT
 
-// import {playSound} from './actions';
-//
-// import {placeUser} from './map';
-// import {removeUser} from './map';
-// import {buildMap} from './map';
-
-// import {Map} from './utils/map';
-// import SocketIOClient from 'socket.io-client';
-
-//"OS":"ios","Version":"10.2.1"
-// import {Platform} from 'react-native';
-
-// let io = require('socket.io')(http);
-
-// const ip = 'quackserver.herokuapp.com';
-
-const ip = 'quackserver.herokuapp.com';
-
 const port = 3000;
-
-// let socket = SocketIOClient('http://' + ip + ':' + port);
 
 // let socket = io('https://' + ip + ':' + port, {secure: true});
 let socket = io(window.location.hostname, {secure: true});

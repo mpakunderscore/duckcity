@@ -1,12 +1,14 @@
 let express = require('express');
-let socketio = require('socket.io');
-let http = require('http');
+let path = require('path');
 
 let app = express();
-let server = http.Server(app);
-let websocket = socketio(server);
+app.use(express.static(path.join(__dirname, 'web')));
 
-const socketPort = process.env.PORT || 8080;
+let server = require('http').Server(app);
+
+let io = require('socket.io')(server);
+
+const socketPort = process.env.PORT || 3000;
 
 let map = {
     users: {},
@@ -17,7 +19,7 @@ exports.run = function () {
 
     server.listen(socketPort, () => console.log('Socket listening on: ' + socketPort));
 
-    websocket.on('connection', (socket) => {
+    io.on('connection', (socket) => {
 
         console.log('connect: ' + socket.id);
 
