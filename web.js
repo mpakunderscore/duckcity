@@ -1,7 +1,7 @@
 let connect = require('connect');
 let serveStatic = require('serve-static');
 
-const webPort = 8080;
+const webPort = 80;
 
 exports.run = function () {
 
