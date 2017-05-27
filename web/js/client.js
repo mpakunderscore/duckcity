@@ -17,7 +17,7 @@
 
 // const ip = 'quackserver.herokuapp.com';
 
-const ip = 'localhost';
+const ip = 'quackserver.herokuapp.com';
 
 const port = 3000;
 
