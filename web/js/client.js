@@ -1,9 +1,10 @@
 
 //CLIENT
 
+const ip = 'localhost';
 const port = 3000;
 
-// let socket = io('https://' + ip + ':' + port, {secure: true});
+// let socket = io('http://' + ip + ':' + port, {secure: false});
 let socket = io(window.location.hostname, {secure: true});
 
 // socket.on('connect', function(){});
@@ -28,6 +29,10 @@ socket.on('map', (map) => {
 
 socket.on('location', (region) => {
     placeUser(JSON.parse(region));
+});
+
+socket.on('image', (id, image) => {
+    changeUserImage(JSON.parse(id, image));
 });
 
 socket.on('disconnected', (id) => {

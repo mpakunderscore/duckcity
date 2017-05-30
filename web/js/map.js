@@ -6,7 +6,7 @@ let markers = [];
 
 function initMap() {
 
-    const city = {lat: 59.9547, lng: 30.3275};
+    const city = {lat: 37.5662684, lng: -122.39029697};
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: city,
@@ -57,9 +57,25 @@ function buildWebMap(map) {
     let stores = map.stores;
 }
 
+function changeUserImage(id, image) {
+
+    console.log('change user image: ' + region.id)
+
+    let place = markers.place({id: id});
+
+    markers[place].marker = new google.maps.Marker({
+
+        position: markers[place].marker.position,
+        map: markers[place].marker.map,
+        // label: 'Label',
+        icon: image
+    });
+}
+
 function placeUser(region) {
 
     console.log('place user: ' + region.id)
+    console.log(region)
 
     let user = {
         id: region.id,
@@ -78,15 +94,47 @@ function placeUser(region) {
     //update user
     if (place > -1) {
 
-        markers[place].region = user.region;
+        if (markers[place].marker.image === images[region.name]) {
+
+            markers[place].marker.setPosition(position);
+
+        } else {
+
+            markers[place].marker.setMap(null);
+            markers.remove(place);
+
+            let image = {
+                url: images[region.name],
+                // This marker is 20 pixels wide by 32 pixels high.
+                // size: new google.maps.Size(250, 250),
+                // The origin for this image is (0, 0).
+                origin: new google.maps.Point(0, 0),
+                // The anchor for this image is the base of the flagpole at (0, 32).
+                anchor: new google.maps.Point(35, 35),
+
+                scaledSize: new google.maps.Size(70, 70)
+            };
+
+            user.marker = new google.maps.Marker({
+
+                position: position,
+                map: map,
+                // label: 'Label',
+                icon: image
+            });
+
+            // user.marker.setAnimation(google.maps.Animation.BOUNCE);
+
+            markers.push(user);
+        }
 
         // const latlng = new google.maps.LatLng(-24.397, 140.644);
-        markers[place].marker.setPosition(position);
+        // markers[place].marker.setPosition(position);
 
     } else {
 
         let image = {
-            url: './images/favicon.png',
+            url: images[region.name],
             // This marker is 20 pixels wide by 32 pixels high.
             // size: new google.maps.Size(250, 250),
             // The origin for this image is (0, 0).
@@ -96,6 +144,8 @@ function placeUser(region) {
 
             scaledSize: new google.maps.Size(70, 70)
         };
+
+        user.image = image;
 
         user.marker = new google.maps.Marker({
 

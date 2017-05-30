@@ -1,9 +1,8 @@
 //SERVER
 
-// let database = require('./database.js');
-// let web = require('./web.js');
-let socket = require('./socket.js');
+let network = require('./network.js');
+network.run();
 
+// let database = require('./database.js');
 // database.run();
-// web.run();
-socket.run();
+
