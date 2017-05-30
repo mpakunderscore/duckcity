@@ -31,6 +31,7 @@ exports.run = function () {
 
         socket.on('sound', (message) => receiveSound(socket, message));
         socket.on('location', (region) => receiveLocation(socket, region));
+        socket.on('image', (name) => receiveImage(socket, name));
         socket.on('disconnect', () => removeUser(socket));
     });
 }
@@ -72,6 +73,13 @@ function receiveLocation(socket, region) {
     map.users[region.id] = region;
 
     socket.broadcast.emit('location', JSON.stringify(region));
+}
+
+function receiveImage(socket, user) {
+
+    user = JSON.parse(user);
+    user.id = socket.id;
+    socket.broadcast.emit('image', JSON.stringify(user));
 }
 
 // function checkUsers() {

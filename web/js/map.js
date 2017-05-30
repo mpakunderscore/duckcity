@@ -57,25 +57,46 @@ function buildWebMap(map) {
     let stores = map.stores;
 }
 
-function changeUserImage(id, image) {
+function changeUserImage(user) {
 
-    console.log('change user image: ' + region.id)
+    console.log('change user image: ' + user.id + ' to name: ' + user.name);
 
-    let place = markers.place({id: id});
+    let place = markers.place(user);
 
-    markers[place].marker = new google.maps.Marker({
+    let position = markers[place].marker.getPosition();
 
-        position: markers[place].marker.position,
-        map: markers[place].marker.map,
+    markers[place].marker.setMap(null);
+    markers.remove(place);
+
+    let image = {
+        url: images[user.name],
+        // This marker is 20 pixels wide by 32 pixels high.
+        // size: new google.maps.Size(250, 250),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(35, 35),
+
+        scaledSize: new google.maps.Size(70, 70)
+    };
+
+    user.marker = new google.maps.Marker({
+
+        position: position,
+        map: map,
         // label: 'Label',
         icon: image
     });
+
+    // user.marker.setAnimation(google.maps.Animation.BOUNCE);
+
+    markers.push(user);
 }
 
 function placeUser(region) {
 
-    console.log('place user: ' + region.id)
-    console.log(region)
+    console.log('place user: ' + region.id);
+    // console.log(region)
 
     let user = {
         id: region.id,
@@ -92,46 +113,16 @@ function placeUser(region) {
     let place = markers.place(user);
 
     //update user
-    if (place > -1) {
+    if (place > -1 && markers[place].image === images[region.name]) {
 
-        if (markers[place].marker.image === images[region.name]) {
-
-            markers[place].marker.setPosition(position);
-
-        } else {
-
-            markers[place].marker.setMap(null);
-            markers.remove(place);
-
-            let image = {
-                url: images[region.name],
-                // This marker is 20 pixels wide by 32 pixels high.
-                // size: new google.maps.Size(250, 250),
-                // The origin for this image is (0, 0).
-                origin: new google.maps.Point(0, 0),
-                // The anchor for this image is the base of the flagpole at (0, 32).
-                anchor: new google.maps.Point(35, 35),
-
-                scaledSize: new google.maps.Size(70, 70)
-            };
-
-            user.marker = new google.maps.Marker({
-
-                position: position,
-                map: map,
-                // label: 'Label',
-                icon: image
-            });
-
-            // user.marker.setAnimation(google.maps.Animation.BOUNCE);
-
-            markers.push(user);
-        }
-
-        // const latlng = new google.maps.LatLng(-24.397, 140.644);
-        // markers[place].marker.setPosition(position);
+        markers[place].marker.setPosition(position);
 
     } else {
+
+        if (place > -1 ) {
+            markers[place].marker.setMap(null);
+            markers.remove(place);
+        }
 
         let image = {
             url: images[region.name],
@@ -145,7 +136,7 @@ function placeUser(region) {
             scaledSize: new google.maps.Size(70, 70)
         };
 
-        user.image = image;
+        user.image = images[region.name];
 
         user.marker = new google.maps.Marker({
 
