@@ -14,9 +14,9 @@ const socketPort = process.env.PORT || 3000;
 
 let map;
 
-exports.run = function (map_) {
+exports.run = function (global) {
 
-     map = map_;
+    map = global;
 
     server.listen(socketPort, () => console.log('socket listening on: ' + socketPort));
 

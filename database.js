@@ -13,18 +13,18 @@ let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
 
 let map;
 
-exports.run = function (map_) {
+exports.run = function (global) {
 
-    map = map_;
+    map = global;
 
-    sequelize
-        .authenticate()
-        .then(function(err) {
-            console.log('database connection has been established successfully');
-        })
-        .catch(function (err) {
-            console.error('unable to connect to the database:', err);
-        });
+    // sequelize
+    //     .authenticate()
+    //     .then(function(err) {
+    //         console.log('database connection has been established successfully');
+    //     })
+    //     .catch(function (err) {
+    //         console.error('unable to connect to the database:', err);
+    //     });
 };
 
 let Place = sequelize.define('place', {
@@ -48,5 +48,5 @@ Place.sync({force: false}).then(() => {
 
 Place.findAll().then(places => {
     map.places = places;
-    console.log(map.places)
+    // console.log(map.places)
 });

@@ -4,8 +4,8 @@
 const port = 3000;
 const ip = 'http://92.61.69.168:' + port;
 
-let socket = io(ip, {secure: false});
-// let socket = io(window.location.hostname, {secure: true});
+// let socket = io(ip, {secure: false});
+let socket = io(window.location.hostname, {secure: true});
 
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});
@@ -28,7 +28,7 @@ socket.on('map', (map) => {
 });
 
 socket.on('location', (region) => {
-    placeUser(JSON.parse(region));
+    setUser(JSON.parse(region));
 });
 
 socket.on('image', (user) => {

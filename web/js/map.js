@@ -11,7 +11,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: city,
-        // mapTypeId: 'mapStyle',
+        mapTypeId: 'mapStyle',
 
         mapTypeControl: false,
         streetViewControl: false,
@@ -20,58 +20,21 @@ function initMap() {
     });
 
     map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyle, { name: 'Map style' }));
-
-
-    // var marker = new google.maps.Marker({
-    //     position: city,
-    //     map: map
-    // });
-}
-
-// the smooth zoom function
-function smoothZoom (map, max, cnt) {
-    if (cnt >= max) {
-        return;
-    }
-    else {
-        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
-            google.maps.event.removeListener(z);
-            smoothZoom(map, max, cnt + 1);
-        });
-        setTimeout(function(){map.setZoom(cnt)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
-    }
 }
 
 function buildWebMap(map) {
 
-    //
-
-    // let testRegion = {
-    //     id: '0',
-    //     latitude: 59.9537,
-    //     longitude: 30.3275,
-    // };
-
-    let home = map.home;
-
     let users = map.users;
 
-    // console.log('users');
-    // console.log(users);
-
     for (let id in users) {
-        placeUser(users[id]);
+        setUser(users[id]);
     }
 
-    console.log(map.places)
+    let places = map.places;
 
-    // users.map(user => {
-    //     placeUser(user);
-    // });
-
-    let items = map.items;
-
-    let stores = map.stores;
+    for (let id in places) {
+        setPlace(places[id]);
+    }
 }
 
 function changeUserImage(user) {
@@ -110,7 +73,7 @@ function changeUserImage(user) {
     markers.push(user);
 }
 
-function placeUser(region) {
+function setUser(region) {
 
     console.log('place user: ' + region.id);
     // console.log(region)
@@ -134,6 +97,7 @@ function placeUser(region) {
 
         markers[place].marker.setPosition(position);
 
+        //or recreate marker
     } else {
 
         if (place > -1 ) {
