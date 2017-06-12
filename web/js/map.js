@@ -37,16 +37,7 @@ function buildWebMap(map) {
     }
 }
 
-function changeUserImage(user) {
-
-    console.log('change user image: ' + user.id + ' to name: ' + user.name);
-
-    let place = markers.place(user);
-
-    let position = markers[place].marker.getPosition();
-
-    markers[place].marker.setMap(null);
-    markers.remove(place);
+function createMarker(user) {
 
     let image = {
         url: images[user.name],
@@ -67,8 +58,20 @@ function changeUserImage(user) {
         // label: 'Label',
         icon: image
     });
+}
 
-    // user.marker.setAnimation(google.maps.Animation.BOUNCE);
+function changeUserImage(user) {
+
+    console.log('change user image: ' + user.id + ' to name: ' + user.name);
+
+    let place = markers.place(user);
+
+    let position = markers[place].marker.getPosition();
+
+    markers[place].marker.setMap(null);
+    markers.remove(place);
+
+    createMarker(user);
 
     markers.push(user);
 }
@@ -107,27 +110,9 @@ function setUser(region) {
 
         console.log(images[region.name])
 
-        let image = {
-            url: images[region.name],
-            // This marker is 20 pixels wide by 32 pixels high.
-            // size: new google.maps.Size(250, 250),
-            // The origin for this image is (0, 0).
-            origin: new google.maps.Point(0, 0),
-            // The anchor for this image is the base of the flagpole at (0, 32).
-            anchor: new google.maps.Point(35, 35),
-
-            scaledSize: new google.maps.Size(70, 70)
-        };
+        createMarker(user);
 
         user.image = images[region.name];
-
-        user.marker = new google.maps.Marker({
-
-            position: position,
-            map: map,
-            // label: 'Label',
-            icon: image
-        });
 
         // user.marker.setAnimation(google.maps.Animation.BOUNCE);
 
@@ -146,6 +131,10 @@ function removeUser(id) {
         markers[place].marker.setMap(null);
         markers.remove(place);
     }
+}
+
+function setPlace() {
+
 }
 
 Array.prototype.place = function (obj) {
