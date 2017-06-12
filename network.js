@@ -12,14 +12,13 @@ let io = require('socket.io')(server);
 
 const socketPort = process.env.PORT || 3000;
 
-let map = {
-    users: {},
-    places: []
-};
+let map;
 
-exports.run = function () {
+exports.run = function (map_) {
 
-    server.listen(socketPort, () => console.log('Socket listening on: ' + socketPort));
+     map = map_;
+
+    server.listen(socketPort, () => console.log('socket listening on: ' + socketPort));
 
     io.on('connection', (socket) => {
 
@@ -34,6 +33,43 @@ exports.run = function () {
         socket.on('image', (name) => receiveImage(socket, name));
         socket.on('disconnect', () => removeUser(socket));
     });
+};
+
+function receiveSound(socket, message) {
+
+    console.log('sound from: ' + socket.id + ' ' + message);
+
+    socket.broadcast.emit('sound', '');
+}
+
+function receiveLocation(socket, user) {
+
+    console.log('location ' + JSON.stringify(user) + ' from: ' + socket.id);
+
+    user = JSON.parse(user);
+
+    user.id = socket.id;
+
+    user.time = new Date().getTime();
+
+    map.users[user.id] = user;
+
+    socket.broadcast.emit('location', JSON.stringify(user));
+}
+
+function receiveImage(socket, user) {
+
+    console.log('image ' + JSON.stringify(user) + ' from: ' + socket.id);
+
+    user = JSON.parse(user);
+
+    user.id = socket.id;
+
+    user.time = new Date().getTime();
+
+    // map.users[user.id].name = user.name;
+
+    socket.broadcast.emit('image', JSON.stringify(user));
 }
 
 function removeUser(socket) {
@@ -44,79 +80,3 @@ function removeUser(socket) {
 
     socket.broadcast.emit('disconnected', socket.id);
 }
-
-function receiveSound(socket, message) {
-
-    console.log('sound from: ' + socket.id + ' ' + message);
-
-    socket.broadcast.emit('sound', '');
-}
-
-function receiveLocation(socket, region) {
-
-    region = JSON.parse(region);
-
-    console.log('location ' + JSON.stringify(region) + ' from: ' + socket.id);
-
-    region.id = socket.id;
-
-    region.time = new Date().getTime();
-
-    // let place = map.users.place(region);
-    //
-    // if (place > -1)
-    //     map.users[place] = region;
-    //
-    // else
-    //     map.users.push(region);
-
-    map.users[region.id] = region;
-
-    socket.broadcast.emit('location', JSON.stringify(region));
-}
-
-function receiveImage(socket, user) {
-
-    user = JSON.parse(user);
-    user.id = socket.id;
-    socket.broadcast.emit('image', JSON.stringify(user));
-}
-
-// function checkUsers() {
-//
-//     for (let i = 0; i < map.users.length; i++) {
-//
-//         if (map.users[i].time < new Date().getTime() - 60000) {
-//
-//             console.log('remove user: ' + map.users[i].id);
-//             map.users.splice(i, 1);
-//         }
-//     }
-//
-//     setTimeout(checkUsers, 5000);
-// }
-//
-// setTimeout(checkUsers, 5000);
-
-Array.prototype.place = function(obj) {
-
-    let i = this.length;
-    while (i--) {
-
-        if (this[i].id == obj.id) {
-            return i;
-        }
-    }
-    return -1;
-};
-
-Array.prototype.remove = function(id) {
-
-    let i = this.length;
-    while (i--) {
-
-        if (this[i].id == id) {
-            this.splice(i, 1);
-        }
-    }
-};

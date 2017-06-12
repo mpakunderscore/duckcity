@@ -1,8 +1,13 @@
 //SERVER
 
-let network = require('./network.js');
-network.run();
+let map = {
+    users: {},
+    places: []
+};
 
-// let database = require('./database.js');
-// database.run();
+let network = require('./network.js');
+network.run(map);
+
+let database = require('./database.js');
+database.run(map);
 

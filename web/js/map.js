@@ -6,7 +6,8 @@ let markers = [];
 
 function initMap() {
 
-    const city = {lat: 37.5662684, lng: -122.39029697};
+    // const city = {lat: 37.5662684, lng: -122.39029697};
+    const city = {lat: 59.9547, lng: 30.3275};
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: city,
@@ -27,6 +28,20 @@ function initMap() {
     // });
 }
 
+// the smooth zoom function
+function smoothZoom (map, max, cnt) {
+    if (cnt >= max) {
+        return;
+    }
+    else {
+        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+            google.maps.event.removeListener(z);
+            smoothZoom(map, max, cnt + 1);
+        });
+        setTimeout(function(){map.setZoom(cnt)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+    }
+}
+
 function buildWebMap(map) {
 
     //
@@ -41,12 +56,14 @@ function buildWebMap(map) {
 
     let users = map.users;
 
-    console.log('users');
-    console.log(users);
+    // console.log('users');
+    // console.log(users);
 
     for (let id in users) {
         placeUser(users[id]);
     }
+
+    console.log(map.places)
 
     // users.map(user => {
     //     placeUser(user);
@@ -123,6 +140,8 @@ function placeUser(region) {
             markers[place].marker.setMap(null);
             markers.remove(place);
         }
+
+        console.log(images[region.name])
 
         let image = {
             url: images[region.name],

@@ -11,29 +11,42 @@ let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
     },
 });
 
-exports.run = function () {
+let map;
+
+exports.run = function (map_) {
+
+    map = map_;
 
     sequelize
         .authenticate()
         .then(function(err) {
-            console.log('Database connection has been established successfully.');
+            console.log('database connection has been established successfully');
         })
         .catch(function (err) {
-            console.log('Unable to connect to the database:', err);
+            console.error('unable to connect to the database:', err);
         });
-}
-
-let User = sequelize.define('user', {
-    title: Sequelize.STRING,
-    description: Sequelize.TEXT
-})
+};
 
 let Place = sequelize.define('place', {
     title: Sequelize.STRING,
-    description: Sequelize.TEXT
-})
+    description: Sequelize.TEXT,
+    location: Sequelize.STRING
+});
 
-let Item = sequelize.define('item', {
-    title: Sequelize.STRING,
-    description: Sequelize.TEXT
-})
+Place.sync({force: false}).then(() => {
+
+    // Table created
+    return Place.create({
+        title: 'First place',
+        description: 'Some text',
+        location: JSON.stringify({
+            latitude: 59.9547,
+            longitude: 30.3275,
+        })
+    });
+});
+
+Place.findAll().then(places => {
+    map.places = places;
+    console.log(map.places)
+});
