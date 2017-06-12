@@ -35,7 +35,7 @@ let Place = sequelize.define('place', {
     location: Sequelize.STRING
 });
 
-Place.sync({force: false}).then(() => {
+Place.sync({force: true}).then(() => {
 
     // Table created
     return Place.create({
