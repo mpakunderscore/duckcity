@@ -1,17 +1,17 @@
 let Sequelize = require('sequelize');
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
-//     host: 'localhost',
-//     dialect: 'postgres',
-//
-//     pool: {
-//         max: 5,
-//         min: 0,
-//         idle: 10000
-//     },
-// });
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
+    host: 'localhost',
+    dialect: 'postgres',
 
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    },
+});
+
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 

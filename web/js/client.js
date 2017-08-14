@@ -2,10 +2,10 @@
 //CLIENT
 
 const port = 3000;
-const ip = 'http://92.61.69.168:' + port;
+const ip = 'localhost:' + port;
 
-// let socket = io(ip, {secure: false});
-let socket = io(window.location.hostname, {secure: true});
+let socket = io(ip, {secure: false});
+// let socket = io(window.location.hostname, {secure: true});
 
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});

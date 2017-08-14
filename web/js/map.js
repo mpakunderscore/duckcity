@@ -9,7 +9,7 @@ function initMap() {
     // const city = {lat: 37.5662684, lng: -122.39029697};
     const city = {lat: 59.9547, lng: 30.3275};
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 3,
         center: city,
         mapTypeId: 'mapStyle',
 
@@ -37,7 +37,7 @@ function buildWebMap(map) {
     }
 }
 
-function createMarker(user) {
+function createMarker(user, position) {
 
     let image = {
         url: images[user.name],
@@ -71,7 +71,7 @@ function changeUserImage(user) {
     markers[place].marker.setMap(null);
     markers.remove(place);
 
-    createMarker(user);
+    createMarker(user, position);
 
     markers.push(user);
 }
@@ -83,6 +83,7 @@ function setUser(region) {
 
     let user = {
         id: region.id,
+        name: region.name,
         region: {
             latitude: region.latitude,
             longitude: region.longitude,
@@ -110,7 +111,7 @@ function setUser(region) {
 
         console.log(images[region.name])
 
-        createMarker(user);
+        createMarker(user, position);
 
         user.image = images[region.name];
 
@@ -133,7 +134,7 @@ function removeUser(id) {
     }
 }
 
-function setPlace() {
+function setPlace(place) {
 
 }
 
@@ -148,7 +149,6 @@ Array.prototype.place = function (obj) {
     }
     return -1;
 };
-
 
 Array.prototype.remove = function (id) {
 
