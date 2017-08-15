@@ -1,17 +1,17 @@
 let Sequelize = require('sequelize');
 
-let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
-    host: 'localhost',
-    dialect: 'postgres',
+// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
+//     host: 'localhost',
+//     dialect: 'postgres',
+//
+//     pool: {
+//         max: 5,
+//         min: 0,
+//         idle: 10000
+//     },
+// });
 
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 10000
-    },
-});
-
-// let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -28,11 +28,11 @@ let NPC = sequelize.define('npc', {
     longitude: Sequelize.FLOAT
 });
 
-NPC.sync({force: false}).then(() => {
+NPC.sync({force: true}).then(() => {
 
     // Table created
 
-    // return generate();
+    return generate();
 });
 
 let names = ['goose',
