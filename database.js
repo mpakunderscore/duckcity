@@ -91,3 +91,4 @@ function buildDatabaseMap() {
     });
 }
 
+buildDatabaseMap()
