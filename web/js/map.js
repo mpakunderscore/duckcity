@@ -30,10 +30,11 @@ function buildWebMap(map) {
         setUser(users[id]);
     }
 
-    let places = map.places;
+    let npc = map.npc;
 
-    for (let id in places) {
-        // setPlace(places[id]);
+    let arrayLength = npc.length;
+    for (let i = 0; i < arrayLength; i++) {
+        setNPC(npc[i]);
     }
 }
 
@@ -64,29 +65,29 @@ function changeUserImage(user) {
 
     console.log('change user image: ' + user.id + ' to name: ' + user.name);
 
-    let place = markers.place(user);
+    let userId = markers.place(user);
 
     let position = markers[place].marker.getPosition();
 
-    markers[place].marker.setMap(null);
-    markers.remove(place);
+    markers[userId].marker.setMap(null);
+    markers.remove(userId);
 
     createMarker(user, position);
 
     markers.push(user);
 }
 
-function setUser(region) {
+function setUser(user) {
 
-    console.log('place user: ' + region.id);
-    // console.log(region)
+    console.log('set user: ' + user.id);
+    console.log(user);
 
-    let user = {
-        id: region.id,
-        name: region.name,
+    user = {
+        id: user.id,
+        name: user.name,
         region: {
-            latitude: region.latitude,
-            longitude: region.longitude,
+            latitude: user.latitude,
+            longitude: user.longitude,
         },
         title: 'user',
         description: 'user'
@@ -94,26 +95,26 @@ function setUser(region) {
 
     let position = {lat: user.region.latitude, lng: user.region.longitude};
 
-    let place = markers.place(user);
+    let userId = markers.place(user);
 
     //update user
-    if (place > -1 && markers[place].image === images[region.name]) {
+    if (userId > -1 && markers[userId].image === images[user.name]) {
 
-        markers[place].marker.setPosition(position);
+        markers[userId].marker.setPosition(position);
 
         //or recreate marker
     } else {
 
-        if (place > -1 ) {
-            markers[place].marker.setMap(null);
-            markers.remove(place);
+        if (userId > -1 ) {
+            markers[userId].marker.setMap(null);
+            markers.remove(userId);
         }
 
-        console.log(images[region.name])
+        console.log(images[user.name])
 
         createMarker(user, position);
 
-        user.image = images[region.name];
+        user.image = images[user.name];
 
         // user.marker.setAnimation(google.maps.Animation.BOUNCE);
 
@@ -125,17 +126,21 @@ function removeUser(id) {
 
     console.log('remove user: ' + id)
 
-    let place = markers.place({id: id});
+    let userId = markers.place({id: id});
 
-    if (place > -1) {
+    if (userId > -1) {
 
-        markers[place].marker.setMap(null);
-        markers.remove(place);
+        markers[userId].marker.setMap(null);
+        markers.remove(userId);
     }
 }
 
-function setPlace(place) {
+//yes, this is ducks. users is a ducks too. everything is a duck. its a DuckScript
+//this is npc
+function setNPC(duck) {
 
+    console.log("NPC")
+    setUser(duck);
 }
 
 Array.prototype.place = function (obj) {

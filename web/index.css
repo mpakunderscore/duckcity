@@ -7,24 +7,20 @@
     }
     #menu {
         width: 100% !important;
-        /*max-width: none !important;*/
+        max-width: none !important;
+        padding: 0 !important;
     }
     .text {
-        /*padding: 20px !important;*/
         padding-left: 20px;
         padding-right: 20px;
     }
-    #menu img#back {
+    #back {
         width: 100% !important;
         /*height: 240px !important;*/
     }
-    .duck {
-        width: 50% !important;
-        height: auto !important;
-    }
-    .button {
-        text-align: center;
-        padding-bottom: 20px;
+    .buttons {
+        /*width: 100% !important;*/
+        /*padding: 20px !important;*/
     }
 }
 
@@ -88,51 +84,20 @@ body {
     box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-#menu img#back {
+#back {
     padding-top: 20px;
     padding-bottom: 20px;
     display: block;
-    /*height: auto;*/
-    /*width: auto;*/
-    /*background-color: red;*/
-}
-
-#menu img.duck {
-    display: inline-block;
-    height: 200px;
-}
-
-img.flip {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
-
-.text {
-    /*padding: 10px;*/
-    /*background-color: lightcyan;*/
-    /*padding-top: 20px;*/
-    /*padding-bottom: 20px;*/
 }
 
 .buttons {
     padding-top: 20px;
     width: 100%;
-    /*background-color: red;*/
-    /*text-align: center;*/
-    /*font-weight: 400;*/
 }
 
-.button {
-    /*padding-top: 20px;*/
-
-    /*width: 100%;*/
-    /*background-color: red;*/
-    /*text-align: center;*/
-    /*font-weight: 400;*/
+.buttons a {
+    text-decoration: none;
+    color: black;
 }
 
 .buttons a:hover {
