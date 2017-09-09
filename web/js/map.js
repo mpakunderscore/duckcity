@@ -20,6 +20,17 @@ function initMap() {
     });
 
     map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyle, { name: 'Map style' }));
+
+    google.maps.event.addListener(map, "rightclick", function(event) {
+
+        let lat = event.latLng.lat();
+        let lng = event.latLng.lng();
+
+        // populate yor box/field with lat, lng
+        // alert("Lat=" + lat + "; Lng=" + lng);
+        openConstructor(null);
+    });
+
 }
 
 function buildWebMap(map) {
@@ -59,6 +70,13 @@ function createMarker(user, position) {
         // label: 'Label',
         icon: image
     });
+
+    user.marker.addListener('click', function() {
+        // map.setZoom(8);
+        // map.setCenter(marker.getPosition());
+        // alert('marker click: ' + user.id)
+        openConstructor(user);
+    });
 }
 
 function changeUserImage(user) {
@@ -67,7 +85,7 @@ function changeUserImage(user) {
 
     let userId = markers.place(user);
 
-    let position = markers[place].marker.getPosition();
+    let position = markers[userId].marker.getPosition();
 
     markers[userId].marker.setMap(null);
     markers.remove(userId);
@@ -79,8 +97,8 @@ function changeUserImage(user) {
 
 function setUser(user) {
 
-    console.log('set user: ' + user.id);
-    console.log(user);
+    // console.log('set user: ' + user.id);
+    // console.log(user);
 
     user = {
         id: user.id,
@@ -110,7 +128,7 @@ function setUser(user) {
             markers.remove(userId);
         }
 
-        console.log(images[user.name])
+        // console.log(images[user.name])
 
         createMarker(user, position);
 
@@ -139,7 +157,7 @@ function removeUser(id) {
 //this is npc
 function setNPC(duck) {
 
-    console.log("NPC")
+    // console.log("NPC")
     setUser(duck);
 }
 

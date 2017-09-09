@@ -3,7 +3,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>Quack City</title>
+        <title>Duck City</title>
 
         <link rel="icon"
               type="image/png"
@@ -11,7 +11,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        <!--<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">-->
 
         <link rel="stylesheet" type="text/css" href="index.css">
 
@@ -31,27 +31,35 @@
 
     <body>
 
-        <div id="menu">
+        <div id="about" class="menu">
 
             <div class="text">
-                Real-time geolocation game / service, anonymous.<br/>
-                Although, it is rather a platform. For many of things.<br/>
-                For the organization of protest.<br/>
+                <div>Real-time geolocation game / service, anonymous.</div>
+                <div>Although, it is rather a platform. For many of things.</div>
+                <div>Create your own story and explore.</div>
             </div>
 
             <img id="back" src="./images/back.jpg">
 
             <div class="text">
-                Place ducks on the map and write something inside.<br/>
-                Download app to find out what the others have written, but only if you are near the duck.
+                <div>Place ducks on the map and write something inside.</div>
+                <!--<div>Right click on map.</div>-->
+                <div>Download app to find out what the others have written, but only if you are near the duck.</div>
             </div>
 
             <div class="buttons">
-                <a href="https://ios.com">iOS</a> and
+
                 <a href="https://android.com">Android</a>
-                <a style="float: right" onclick="closeMenu()">Close</a>
+                and
+                <a href="https://ios.com">iOS</a>
+                <a class="close" onclick="closeMenu()">Close</a>
+
             </div>
 
+        </div>
+
+        <div id="constructor" class="menu">
+            <div>
         </div>
 
         <div id="map"></div>

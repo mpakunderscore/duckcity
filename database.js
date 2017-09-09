@@ -1,17 +1,18 @@
 let Sequelize = require('sequelize');
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', {
-//     host: 'localhost',
-//     dialect: 'postgres',
-//
-//     pool: {
-//         max: 5,
-//         min: 0,
-//         idle: 10000
-//     },
-// });
+let set = {
+    host: 'localhost',
+    dialect: 'postgres',
 
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    }
+}
+
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -35,13 +36,13 @@ NPC.sync({force: false}).then(() => {
     // return generate();
 });
 
-let names = ['goose',
+let names = [
     'cyber',
     'death',
     'chick',
     'spacy',
     'sir',
-    'drake']
+    'drake'];
 
 function generate() {
 
@@ -87,7 +88,7 @@ function buildDatabaseMap() {
         // }
 
 
-        console.log(map)
+        // console.log(map)
     });
 }
 
