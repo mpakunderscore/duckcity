@@ -11,8 +11,8 @@ let set = {
     }
 }
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -23,8 +23,8 @@ exports.run = function (global) {
 
 let NPC = sequelize.define('npc', {
     title: Sequelize.STRING,
-    name: Sequelize.STRING,
     description: Sequelize.TEXT,
+    name: Sequelize.STRING,
     latitude: Sequelize.FLOAT,
     longitude: Sequelize.FLOAT
 });

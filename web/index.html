@@ -21,8 +21,10 @@
         <script src="js/index.js"></script>
         <script src="js/map.js"></script>
         <script src="js/client.js"></script>
-        <script src="js/style.js"></script>
+
+        <script src="js/utils/style.js"></script>
         <script src="js/utils/images.js"></script>
+        <script src="js/utils/ga.js"></script>
 
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzRMWRDlblZz0atUJT2r8kJO_Ur7f-TCI&callback=initMap">
@@ -65,23 +67,33 @@
             </div>
 
             <div class="text form" contenteditable="true">
-                Ответ к загадке
             </div>
 
             <div class="text form" contenteditable="true">
-                Перейти к утке родителю или начать нову ветку
+                Напиши сюда ответ к загадке или оставь пустым
             </div>
 
-            <img class="back" src="./images/back.jpg">
+            <div class="text form">
+                <a>Выбрать утку родителя</a>
+            </div>
 
-            <div class="text">
+            <div class="text form" contenteditable="true">
+                Время видимости
+            </div>
+
+            <div class="text form" contenteditable="true">
+                Время старта
+            </div>
+
+            <img class="back" src="./images/back.jpg" onclick="nextDuck()">
+
+            <div class="text description">
                 This is Quack. He is a simple duck and have only text inside. And sometimes he makes funny sound.
             </div>
 
             <div class="buttons">
                 <a onclick="closeConstructor()">Save</a>
-                or
-                <a onclick="closeConstructor()">Delete</a>
+                <a class="delete" onclick="closeConstructor()">Delete</a>
                 <a class="close" onclick="closeConstructor()">Close</a>
             </div>
 

@@ -107,8 +107,8 @@ function setUser(user) {
             latitude: user.latitude,
             longitude: user.longitude,
         },
-        title: 'user',
-        description: 'user'
+        title: user.title,
+        description: user.description,
     };
 
     let position = {lat: user.region.latitude, lng: user.region.longitude};
