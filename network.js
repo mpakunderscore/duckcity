@@ -1,6 +1,8 @@
 let express = require('express');
 let path = require('path');
 
+let database = require('./database.js');
+
 let app = express();
 
 //STATIC WEB
@@ -31,6 +33,9 @@ exports.run = function (global) {
         socket.on('sound', (message) => receiveSound(socket, message));
         socket.on('location', (region) => receiveLocation(socket, region));
         socket.on('image', (name) => receiveImage(socket, name));
+
+        socket.on('create', (duck) => createDuck(socket, duck));
+
         socket.on('disconnect', () => removeUser(socket));
     });
 };
@@ -79,4 +84,8 @@ function removeUser(socket) {
     delete map.users[socket.id];
 
     socket.broadcast.emit('disconnected', socket.id);
+}
+
+function createDuck(socket, duck) {
+    database.createDuck(duck)
 }

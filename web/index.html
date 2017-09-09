@@ -63,36 +63,31 @@
 
         <div id="constructor" draggable="true" class="menu">
 
-            <div class="text" contenteditable="true">
-            </div>
+            <div class="text" contenteditable="true" data-text="Title for new duck"></div>
 
-            <div class="text form" contenteditable="true">
-            </div>
+            <div class="text form" contenteditable="true" data-text="Description and main text"></div>
 
-            <div class="text form" contenteditable="true">
-                Напиши сюда ответ к загадке или оставь пустым
-            </div>
+            <div class="text form" contenteditable="true" data-text="Answer if needed"></div>
 
-            <div class="text form">
-                <a>Выбрать утку родителя</a>
-            </div>
+            <div class="text form"><a onclick="parentDuck()">Parent duck</a></div>
 
-            <div class="text form" contenteditable="true">
-                Время видимости
-            </div>
+            <div class="text form" contenteditable="true" data-text="Visibility time"></div>
 
-            <div class="text form" contenteditable="true">
-                Время старта
-            </div>
+            <div class="text form" contenteditable="true" data-text="Start time"></div>
 
-            <img class="back" src="./images/back.jpg" onclick="nextDuck()">
+            <div style="position: relative">
+                <img class="back" src="./images/back.jpg" onclick="nextDuck()">
+                <img class="duck"
+                     src="./images/goose/index.png"
+                     onclick="nextDuck()">
+            </div>
 
             <div class="text description">
                 This is Quack. He is a simple duck and have only text inside. And sometimes he makes funny sound.
             </div>
 
             <div class="buttons">
-                <a onclick="closeConstructor()">Save</a>
+                <a onclick="saveDuck()">Save</a>
                 <a class="delete" onclick="closeConstructor()">Delete</a>
                 <a class="close" onclick="closeConstructor()">Close</a>
             </div>

@@ -74,6 +74,11 @@ body {
     outline: 0 solid transparent;
 }
 
+[contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text);
+    color: lightgrey;
+}
+
 .form {
     padding-top: 10px;
 }
@@ -82,6 +87,21 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
     display: block;
+}
+
+.duck {
+    position: absolute;
+    height: 150px;
+    top: 50px;
+    left: 250px;
+    /*top: -100px;*/
+    /*padding-bottom: 100px;*/
+
+    /*background-color: rgba(255, 255, 255, 0.2);*/
+    /*box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);*/
+    border-radius: 150px;
+
+    filter: brightness(110%);
 }
 
 .description {

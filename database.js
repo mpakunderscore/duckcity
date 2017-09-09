@@ -9,10 +9,9 @@ let set = {
         min: 0,
         idle: 10000
     }
-}
+};
 
-let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-// let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize(process.env.DATABASE_URL || 'quack', 'pavelkuzmin', '', set);
 
 let map;
 
@@ -63,6 +62,20 @@ function generate() {
 // 59.9547
 //30.3275
 
+exports.createDuck = function (duck) {
+
+    NPC.create(duck);
+
+    map.npc.push(duck);
+}
+
+// {title: 'Some title',
+// name: names[Math.floor(Math.random()*names.length)],
+// description: 'Some description',
+// latitude: Math.floor(Math.random()*18000)/100-90,
+// longitude: Math.floor(Math.random()*36000)/100-180,}
+
+
 function buildDatabaseMap() {
 
     NPC.findAll().then(npc => {
@@ -92,4 +105,4 @@ function buildDatabaseMap() {
     });
 }
 
-buildDatabaseMap()
+buildDatabaseMap();
