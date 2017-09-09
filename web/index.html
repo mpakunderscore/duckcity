@@ -13,7 +13,8 @@
 
         <!--<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">-->
 
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/media.css">
 
         <script src="js/lib/socket.io.slim.js"></script>
 
@@ -39,7 +40,7 @@
                 <div>Create your own story and explore.</div>
             </div>
 
-            <img id="back" src="./images/back.jpg">
+            <img class="back" src="./images/back.jpg">
 
             <div class="text">
                 <div>Place ducks on the map and write something inside.</div>
@@ -49,16 +50,40 @@
 
             <div class="buttons">
 
-                <a href="https://android.com">Android</a>
+                <a href="https://google.com">Android</a>
                 and
-                <a href="https://ios.com">iOS</a>
-                <a class="close" onclick="closeMenu()">Close</a>
+                <a href="https://apple.com">iOS</a>
+                <a class="close" onclick="closeAbout()">Close</a>
 
             </div>
 
         </div>
 
-        <div id="constructor" class="menu">
+        <div id="constructor" draggable="true" class="menu">
+
+            <div class="text" contenteditable="true">
+            </div>
+
+            <div class="text form" contenteditable="true">
+                Ответ к загадке
+            </div>
+
+            <div class="text form" contenteditable="true">
+                Перейти к утке родителю или начать нову ветку
+            </div>
+
+            <img class="back" src="./images/back.jpg">
+
+            <div class="text">
+                This is Quack. He is a simple duck and have only text inside. And sometimes he makes funny sound.
+            </div>
+
+            <div class="buttons">
+                <a onclick="closeConstructor()">Save</a>
+                or
+                <a onclick="closeConstructor()">Delete</a>
+                <a class="close" onclick="closeConstructor()">Close</a>
+            </div>
 
         </div>
 

@@ -1,20 +1,26 @@
-function closeMenu() {
+function closeAbout() {
     document.getElementById('about').style.display = 'none';
+}
+
+function closeConstructor() {
+    document.getElementById('constructor').style.display = 'none';
 }
 
 function openConstructor(user) {
 
-    closeMenu();
+    closeAbout();
 
     document.getElementById('constructor').style.display = 'block';
 
+    let text = document.getElementById('constructor').getElementsByClassName('text')[0];
+
     if (user !== null) {
 
-        document.getElementById('constructor').innerText = user.description;
+        text.innerText = user.id + " " + user.description + " " + user.name;
         console.log(user)
 
     } else {
 
-        document.getElementById('constructor').innerText = "New";
+        text.innerText = "New";
     }
 }
