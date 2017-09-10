@@ -11,9 +11,8 @@ let set = {
     }
 };
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -64,12 +63,24 @@ function generate() {
 // 59.9547
 //30.3275
 
-exports.createDuck = function (duck) {
+exports.updateDuck = function (duck) {
 
-    NPC.create(duck);
+    console.log(duck)
 
-    map.npc.push(duck);
-}
+    if (duck.id === undefined) {
+
+        NPC.create(duck);
+        map.npc.push(duck);
+
+    } else {
+
+        NPC.update(duck, { where: { id: duck.id } }).then((result) => {
+
+            // here your result is simply an array with number of affected rows
+            console.log(result);
+        });
+    }
+};
 
 // {title: 'Some title',
 // name: names[Math.floor(Math.random()*names.length)],

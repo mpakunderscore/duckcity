@@ -28,7 +28,7 @@ function initMap() {
 
         // populate yor box/field with lat, lng
         // alert("Lat=" + lat + "; Lng=" + lng);
-        openConstructor(null);
+        openConstructor(null, {lat: lat, lng: lng});
     });
 
 }
@@ -75,7 +75,7 @@ function createMarker(user, position) {
         // map.setZoom(8);
         // map.setCenter(marker.getPosition());
         // alert('marker click: ' + user.id)
-        openConstructor(user);
+        openConstructor(user, position);
     });
 }
 

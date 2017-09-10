@@ -34,7 +34,7 @@ exports.run = function (global) {
         socket.on('location', (region) => receiveLocation(socket, region));
         socket.on('image', (name) => receiveImage(socket, name));
 
-        socket.on('create', (duck) => createDuck(socket, duck));
+        socket.on('update', (duck) => updateDuck(socket, duck));
 
         socket.on('disconnect', () => removeUser(socket));
     });
@@ -86,6 +86,7 @@ function removeUser(socket) {
     socket.broadcast.emit('disconnected', socket.id);
 }
 
-function createDuck(socket, duck) {
-    database.createDuck(duck)
+function updateDuck(socket, duck) {
+
+    database.updateDuck(JSON.parse(duck))
 }

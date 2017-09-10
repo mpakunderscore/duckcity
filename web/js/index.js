@@ -8,7 +8,7 @@ function closeConstructor() {
 
 let duck = {};
 
-function openConstructor(user) {
+function openConstructor(user, region) {
 
     duck = user;
 
@@ -16,14 +16,18 @@ function openConstructor(user) {
 
     document.getElementById('constructor').style.display = 'block';
 
-    let title = document.getElementById('constructor').getElementsByClassName('text')[0];
-    let description = document.getElementById('constructor').getElementsByClassName('text')[1];
+    let fields = document.getElementById('constructor').getElementsByClassName('text');
+
+    let title = fields[0];
+    let description = fields[1];
+    let answer = fields[2];
 
     if (user !== null) {
 
         title.innerText = user.title;
         description.innerText = user.description;
-        // console.log(user)
+        answer.innerText = user.answer;
+        console.log(user)
 
         let back = document.getElementById('constructor').getElementsByClassName('back')[0];
         back.src = "./images/back.jpg";
@@ -31,11 +35,17 @@ function openConstructor(user) {
     //new duck
     } else {
 
+        duck = {};
+
         // title.innerText = "Заголовок для новой утки";
         // description.innerText = "Напиши сюда текст который будет виден в мобильном клиенте, прямо выдели вот это все и отредактируй";
 
         title.innerText = "";
         description.innerText = "";
+        answer.innerText = "";
+
+        duck.latitude = region.lat;
+        duck.longitude = region.lng;
 
         //TODO longitude latitude
     }
@@ -43,8 +53,8 @@ function openConstructor(user) {
 
 function saveDuck() {
 
-    if (duck === null || duck.id === null)
-        duck = {};
+    // if (duck === null || duck.id === null)
+    //     duck = {};
 
     let fields = document.getElementById('constructor').getElementsByClassName('text');
 
@@ -55,11 +65,13 @@ function saveDuck() {
     duck.visibility = fields[4].innerText;
     duck.start = fields[5].innerText;
 
+    duck.name = "goose";
+
     // let name = document.getElementById('constructor').getElementsByClassName('text')[6];
 
-    console.log(duck);
+    // console.log(duck);
 
-    // createDuck(duck)
+    updateDuck(duck)
 }
 
 function deleteDuck() {
@@ -80,6 +92,5 @@ function nextDuck() {
 
     let description = document.getElementById('constructor').getElementsByClassName('text description')[0];
 
-    description.innerHTML = "This is Sir, he will respect you only if you have the answer. " +
-        "Do you know it? Are you aware, or just a peasant?";
+    description.innerHTML = "This is Sir, he will respect you only if you have the answer.";
 }
