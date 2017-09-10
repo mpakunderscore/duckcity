@@ -69,8 +69,9 @@ exports.updateDuck = function (duck) {
 
     if (duck.id === undefined) {
 
-        NPC.create(duck);
-        map.npc.push(duck);
+        NPC.create(duck).then( function (user) {
+            map.npc.push(user);
+        });
 
     } else {
 
