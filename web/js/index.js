@@ -71,7 +71,9 @@ function saveDuck() {
 
     // console.log(duck);
 
-    updateDuck(duck)
+    updateDuck(duck);
+
+    closeConstructor();
 }
 
 function deleteDuck() {
