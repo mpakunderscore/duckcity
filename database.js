@@ -11,8 +11,8 @@ let set = {
     }
 };
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -71,6 +71,7 @@ exports.updateDuck = function (duck) {
 
         NPC.create(duck).then( function (user) {
             map.npc.push(user);
+            // socket.broadcast.emit('duck', duck);
         });
 
     } else {
@@ -82,6 +83,7 @@ exports.updateDuck = function (duck) {
             let place = map.npc.place(duck);
             // console.log(place)
 
+            //TODO ?
             NPC.findById(duck.id).then(function(user) {
 
                 map.npc[place] = user;

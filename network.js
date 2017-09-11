@@ -88,5 +88,5 @@ function removeUser(socket) {
 
 function updateDuck(socket, duck) {
 
-    database.updateDuck(JSON.parse(duck))
+    database.updateDuck(JSON.parse(duck));
 }

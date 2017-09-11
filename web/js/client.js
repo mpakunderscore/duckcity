@@ -4,8 +4,8 @@
 const port = 3000;
 const ip = 'localhost:' + port;
 
-// let socket = io(ip, {secure: false});
-let socket = io(window.location.hostname, {secure: true});
+let socket = io(ip, {secure: false});
+// let socket = io(window.location.hostname, {secure: true});
 
 // socket.on('connect', function(){});
 // socket.on('event', function(data){});
@@ -20,10 +20,21 @@ let socket = io(window.location.hostname, {secure: true});
 // };
 
 function updateDuck(duck) {
-    console.log(duck);
+    // console.log(duck);
     duck.marker = null;
     socket.emit('update', JSON.stringify(duck));
+    duck.id = "";
+    setUser(duck);
 }
+
+
+socket.on('duck', (duck) => {
+    console.log("socket duck");
+    // console.log(JSON.parse(duck));
+    // map.npc.push(duck);
+    setUser(duck);
+
+});
 
 socket.on('sound', (message) => {
     // playSound();

@@ -86,13 +86,23 @@ function parentDuck() {
 
 function nextDuck() {
 
-    console.log("next duck")
+    console.log("next duck");
+
+
+    let duck = document.getElementById('constructor').getElementsByClassName('duck')[0];
+
+    duck.src = "../images/goose/spacy.png";
+
+    // let description = document.getElementById('constructor').getElementsByClassName('text description')[0];
+
+    // description.innerHTML = "This is Sir, he will respect you only if you have the answer.";
+}
+
+function nextBackground() {
 
     let back = document.getElementById('constructor').getElementsByClassName('back')[0];
 
     back.src = "./images/back.jpg";
 
-    let description = document.getElementById('constructor').getElementsByClassName('text description')[0];
-
-    description.innerHTML = "This is Sir, he will respect you only if you have the answer.";
+    alert("nextBackground");
 }

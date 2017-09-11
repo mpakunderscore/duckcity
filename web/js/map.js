@@ -9,7 +9,7 @@ function initMap() {
     // const city = {lat: 37.5662684, lng: -122.39029697};
     const city = {lat: 59.9000, lng: 30.3000};
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 3,
+        zoom: 5,
         center: city,
         mapTypeId: 'mapStyle',
 
