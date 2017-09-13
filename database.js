@@ -52,7 +52,9 @@ let names = [
 let back = [
     'day',
     'night'
-]
+];
+
+//FFS
 
 function generate() {
 
