@@ -1,5 +1,7 @@
 let Sequelize = require('sequelize');
 
+let network = require('./network.js');
+
 let set = {
     host: 'localhost',
     dialect: 'postgres',
@@ -11,8 +13,8 @@ let set = {
     }
 };
 
-let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-// let sequelize = new Sequelize(process.env.DATABASE_URL);
+// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -24,16 +26,18 @@ exports.run = function (global) {
 let NPC = sequelize.define('npc', {
     title: Sequelize.STRING,
     description: Sequelize.TEXT,
+    answer: Sequelize.STRING,
     name: Sequelize.STRING,
+    back: Sequelize.STRING,
     latitude: Sequelize.FLOAT,
     longitude: Sequelize.FLOAT
 });
 
-NPC.sync({force: false}).then(() => {
+NPC.sync({force: true}).then(() => {
 
     // Table created
 
-    // return generate();
+    return generate();
 });
 
 let names = [
@@ -42,16 +46,24 @@ let names = [
     'chick',
     'spacy',
     'sir',
-    'drake'];
+    'drake'
+];
+
+let back = [
+    'day',
+    'night'
+]
 
 function generate() {
 
     for (let i = 0; i < 100; i++ ) {
 
         NPC.create({
-            title: 'Some title',
+            title: 'Generated',
+            description: 'Generated',
+            answer: 'Generated',
             name: names[Math.floor(Math.random()*names.length)],
-            description: 'Some description',
+            back: back[Math.floor(Math.random()*back.length)],
             latitude: Math.floor(Math.random()*18000)/100-90,
             longitude: Math.floor(Math.random()*36000)/100-180,
         })
@@ -63,15 +75,17 @@ function generate() {
 // 59.9547
 //30.3275
 
-exports.updateDuck = function (duck) {
+exports.updateDuck = function (socket, duck) {
 
     console.log(duck)
 
     if (duck.id === undefined) {
 
         NPC.create(duck).then( function (user) {
+
             map.npc.push(user);
-            // socket.broadcast.emit('duck', duck);
+
+            network.updateDuckSend(socket, user);
         });
 
     } else {
@@ -87,8 +101,9 @@ exports.updateDuck = function (duck) {
             NPC.findById(duck.id).then(function(user) {
 
                 map.npc[place] = user;
-            });
 
+                network.updateDuckSend(socket, duck);
+            });
 
             // console.log(result);
         });
@@ -116,8 +131,9 @@ function buildDatabaseMap() {
 
         map.users['0'] = {
             title: 'Test user',
-            name: 'goose',
             description: 'Some text',
+            name: 'goose',
+            back: 'day',
             latitude: 59.0000,
             longitude: 30.0000
         };

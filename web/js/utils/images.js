@@ -1,12 +1,15 @@
-const images = {
-    goose: './../../images/goose/index.png',
-    cyber: './../../images/goose/cyber.png',
-    death: './../../images/goose/death.png',
-    chick: './../../images/goose/chick.png',
-    spacy: './../../images/goose/spacy.png',
-    sir: './../../images/goose/sir.png',
-    drake: './../../images/goose/drake.png'
+const ducks = {
+    goose: './../../images/ducks/index.png',
+    cyber: './../../images/ducks/cyber.png',
+    death: './../../images/ducks/death.png',
+    chick: './../../images/ducks/chick.png',
+    spacy: './../../images/ducks/spacy.png',
+    sir: './../../images/ducks/sir.png',
+    drake: './../../images/ducks/drake.png'
 };
 
-
+const back = {
+    day: './../../images/back/day.png',
+    night: './../../images/back/night.png',
+}
 

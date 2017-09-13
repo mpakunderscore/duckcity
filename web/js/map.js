@@ -52,7 +52,7 @@ function buildWebMap(map) {
 function createMarker(user, position) {
 
     let image = {
-        url: images[user.name],
+        url: ducks[user.name],
         // This marker is 20 pixels wide by 32 pixels high.
         // size: new google.maps.Size(250, 250),
         // The origin for this image is (0, 0).
@@ -100,27 +100,21 @@ function setUser(user) {
     // console.log('set user: ' + user.id);
     // console.log(user);
 
-    user = {
-        id: user.id,
-        name: user.name,
-        region: {
-            latitude: user.latitude,
-            longitude: user.longitude,
-        },
-        title: user.title,
-        description: user.description,
-    };
+    // user.region = {
+    //     latitude: user.latitude,
+    //         longitude: user.longitude
+    // };
 
-    let position = {lat: user.region.latitude, lng: user.region.longitude};
+    let position = {lat: user.latitude, lng: user.longitude};
 
     let userId = markers.place(user);
 
     //update user
-    if (userId > -1 && markers[userId].image === images[user.name]) {
+    if (userId > -1 && markers[userId].image === ducks[user.name]) {
 
         markers[userId].marker.setPosition(position);
 
-        //or recreate marker
+    //or recreate marker
     } else {
 
         if (userId > -1 ) {
@@ -128,11 +122,11 @@ function setUser(user) {
             markers.remove(userId);
         }
 
-        // console.log(images[user.name])
+        // console.log(ducks[user.name])
 
         createMarker(user, position);
 
-        user.image = images[user.name];
+        user.image = ducks[user.name];
 
         // user.marker.setAnimation(google.maps.Animation.BOUNCE);
 

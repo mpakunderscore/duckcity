@@ -91,15 +91,15 @@ body {
 
 .duck {
     position: absolute;
-    height: 150px;
+    height: 130px;
     top: 50px;
-    left: 250px;
+    left: 50px;
     /*top: -100px;*/
     /*padding-bottom: 100px;*/
 
     /*background-color: rgba(255, 255, 255, 0.2);*/
     /*box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);*/
-    border-radius: 150px;
+    /*border-radius: 150px;*/
 
     /*filter: brightness(110%);*/
 }
