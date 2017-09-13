@@ -33,11 +33,11 @@ let NPC = sequelize.define('npc', {
     longitude: Sequelize.FLOAT
 });
 
-NPC.sync({force: true}).then(() => {
+NPC.sync({force: false}).then(() => {
 
     // Table created
 
-    return generate();
+    // return generate();
 });
 
 let names = [
