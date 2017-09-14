@@ -8,6 +8,8 @@ let app = express();
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
 
+app.use('/business', express.static(path.join(__dirname, 'web')));
+
 let server = require('http').Server(app);
 
 let io = require('socket.io')(server);
@@ -34,7 +36,7 @@ exports.run = function (global) {
         socket.on('location', (region) => receiveLocation(socket, region));
         socket.on('image', (name) => receiveImage(socket, name));
 
-        socket.on('update', (duck) => updateDuck(socket, duck));
+        socket.on('duck', (duck) => updateDuck(socket, duck));
 
         socket.on('disconnect', () => removeUser(socket));
     });
@@ -89,11 +91,12 @@ function removeUser(socket) {
 function updateDuck(socket, duck) {
 
     database.updateDuck(socket, JSON.parse(duck));
-    socket.broadcast.emit('duck', duck);
+
+    // socket.emit('duck', duck);
 }
 
 exports.updateDuckSend = function (socket, duck) {
 
-    //TODO
-    socket.broadcast.emit('duck', JSON.stringify(duck));
+    // console.log("SEND DUCK broadcast")
+    // socket.broadcast.emit('duck', JSON.stringify(duck));
 }

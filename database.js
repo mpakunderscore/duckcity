@@ -13,8 +13,8 @@ let set = {
     }
 };
 
-// let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
-let sequelize = new Sequelize(process.env.DATABASE_URL);
+let sequelize = new Sequelize('quack', 'pavelkuzmin', '', set);
+// let sequelize = new Sequelize(process.env.DATABASE_URL);
 
 let map;
 
@@ -99,13 +99,17 @@ exports.updateDuck = function (socket, duck) {
             let place = map.npc.place(duck);
             // console.log(place)
 
-            //TODO ?
-            NPC.findById(duck.id).then(function(user) {
+            map.npc[place] = duck;
 
-                map.npc[place] = user;
+            // //TODO ?
+            // NPC.findById(duck.id).then(function(user) {
+            //
+            //
+            //
 
-                network.updateDuckSend(socket, duck);
-            });
+            // });
+
+            network.updateDuckSend(socket, duck);
 
             // console.log(result);
         });
@@ -137,7 +141,7 @@ function buildDatabaseMap() {
             name: 'goose',
             back: 'day',
             latitude: 59.0000,
-            longitude: 30.0000
+            longitude: 31.0000
         };
 
         // for (let i in npc) {

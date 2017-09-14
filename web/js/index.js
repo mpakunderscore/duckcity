@@ -1,5 +1,19 @@
+let path = window.location.href.toString().split(window.location.host)[1];
+
+if (path.startsWith("/business")) {
+
+    closeAbout();
+
+    openBusiness();
+}
+
+
 function closeAbout() {
     document.getElementById('about').style.display = 'none';
+}
+
+function openBusiness() {
+    document.getElementById('business').style.display = 'block';
 }
 
 function closeConstructor() {
@@ -37,6 +51,8 @@ function openConstructor(user, region) {
 
         // if (user.name === undefined || user.name === null)
         //     user.name = "spacy";
+
+        duck.marker = user.marker;
 
         duckImg.src = ducks[user.name];
         duck.name = user.name;
