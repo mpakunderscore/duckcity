@@ -4,13 +4,15 @@
 let map;
 let markers = [];
 
+let center;
+
 function initMap() {
 
     // const city = {lat: 37.5662684, lng: -122.39029697};
-    const city = {lat: 59.9000, lng: 30.3000};
+    center = {lat: 59.9000, lng: 30.3000};
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 5,
-        center: city,
+        center: center,
         mapTypeId: 'mapStyle',
 
         mapTypeControl: false,
@@ -18,6 +20,21 @@ function initMap() {
         rotateControl: false,
         fullscreenControl: true
     });
+
+    // window.setInterval(function(){
+
+        // center = {lat: center.lat + 0.01, lng: center.lng + 0.01};
+
+        // console.log(Math.floor(Math.random()*3-1));
+        // center.lat += 0.01;
+        // center.lng += 0.02;
+
+        // let point = new google.maps.LatLng(center.lat, center.lng);
+
+        // using global variable:
+        // map.panTo(point);
+
+    // }, 50);
 
     map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyle, { name: 'Map style' }));
 

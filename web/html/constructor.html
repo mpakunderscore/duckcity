@@ -1,10 +1,10 @@
-<div id="constructor" class="block">
+<div id="constructor">
 
-    <div class="text" contenteditable="true" data-text="Title for new duck"></div>
-
-    <div class="text form" contenteditable="true" data-text="Description and main text"></div>
-
-    <div class="text form" contenteditable="true" data-text="Answer if needed"></div>
+    <div class="text">
+        <div class="field" contenteditable="true" data-text="Title for new duck"></div>
+        <div class="field" contenteditable="true" data-text="Description and main text"></div>
+        <div class="field" contenteditable="true" data-text="Answer if needed"></div>
+    </div>
 
     <!--<div class="text form"><a onclick="parentDuck()">Parent duck</a></div>-->
 
@@ -27,10 +27,10 @@
         Click on duck or background to change.
     </div>
 
-    <div class="buttons">
+    <div class="buttons text">
         <a onclick="saveDuck()">Save</a>
-        <a class="delete" onclick="closeConstructor()">Delete</a>
-        <a class="close" onclick="closeConstructor()">Close</a>
+        <a class="delete" onclick="closeModal()">Delete</a>
+        <a class="close" onclick="closeModal()">Close</a>
     </div>
 
 </div>

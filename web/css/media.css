@@ -6,9 +6,11 @@
         height: 100%;
     }
     #column {
-        position: fixed;
+        /*position: fixed;*/
         width: 100%;
+        min-width: 0;
         max-width: none;
+        overflow: scroll;
     }
     .block {
         /*width: calc(100% - 20);*/
@@ -18,18 +20,31 @@
         /*padding: 0;*/
     }
     #header {
+        overflow: hidden;
         width: 100%;
+        /*height: 64px;*/
+
+        /*display: inline-block;*/
         /*margin: 20px;*/
         /*max-width: none;*/
+
+        /*text-align: center;*/
     }
 
     #header div.text {
         padding-left: 10px;
         padding-right: 10px;
+
+        /*display: inline-block;*/
+
+        /*float: left;*/
     }
     #main {
         width: 100%;
         max-width: none;
+    }
+    #footer {
+        display: none;
     }
     .text {
         /*padding-left: 20px;*/
