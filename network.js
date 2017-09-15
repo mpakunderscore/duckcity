@@ -7,7 +7,7 @@ let app = express();
 
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
-app.use('/locals', express.static(path.join(__dirname, 'web')));
+app.use('/connect', express.static(path.join(__dirname, 'web')));
 app.use('/news', express.static(path.join(__dirname, 'web')));
 app.use('/login', express.static(path.join(__dirname, 'web')));
 

@@ -269,3 +269,21 @@ a:hover {
 a.active {
     color: red;
 }
+
+.response {
+    text-align: center;
+}
+
+.response a {
+
+    /*width: 100%;*/
+    font-size: 150%;
+    padding-bottom: 20px;
+    color: #4dd530;
+}
+
+
+img.copyright {
+    width: 100px;
+    /*background-color: #4affff;*/
+}
