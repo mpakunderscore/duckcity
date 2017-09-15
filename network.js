@@ -7,12 +7,15 @@ let app = express();
 
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
-
 app.use('/locals', express.static(path.join(__dirname, 'web')));
-
 app.use('/news', express.static(path.join(__dirname, 'web')));
-
 app.use('/login', express.static(path.join(__dirname, 'web')));
+
+
+app.use('/copyright', express.static(path.join(__dirname, 'web')));
+app.use('/privacy', express.static(path.join(__dirname, 'web')));
+app.use('/social', express.static(path.join(__dirname, 'web')));
+app.use('/api', express.static(path.join(__dirname, 'web')));
 
 let server = require('http').Server(app);
 
@@ -102,5 +105,5 @@ function updateDuck(socket, duck) {
 exports.updateDuckSend = function (socket, duck) {
 
     // console.log("SEND DUCK broadcast")
-    // socket.broadcast.emit('duck', JSON.stringify(duck));
+    socket.broadcast.emit('duck', JSON.stringify(duck));
 }

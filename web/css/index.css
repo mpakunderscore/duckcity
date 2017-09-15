@@ -203,6 +203,12 @@ body {
     padding-top: 10px;
 }
 
+.time {
+    /*float: right;*/
+    font-weight: 400;
+}
+
+
 .back {
     width: 100%;
     /*padding-top: 20px;*/
@@ -258,4 +264,8 @@ a {
 a:hover {
     color: red;
     cursor: pointer;
+}
+
+a.active {
+    color: red;
 }

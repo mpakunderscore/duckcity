@@ -45,7 +45,7 @@ function openConstructor(user, region) {
         //new duck
     } else {
 
-        console.log('CREATE NEW DUCK')
+        console.log('CREATE NEW DUCK');
 
         duck = {};
 
@@ -74,7 +74,7 @@ function saveDuck() {
     // if (duck === null || duck.id === null)
     //     duck = {};
 
-    let fields = document.getElementById('constructor').getElementsByClassName('text');
+    let fields = document.getElementById('constructor').getElementsByClassName('field');
 
     duck.title = fields[0].innerText;
     duck.description = fields[1].innerText;

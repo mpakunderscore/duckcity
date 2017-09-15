@@ -1,20 +1,49 @@
 let path = window.location.href.toString().split(window.location.host)[1];
 
+console.log(path);
+
 document.getElementById("main").innerHTML = load("html/info.html");
 
-if (path.startsWith("/locals")) {
-    document.getElementById("main").innerHTML = load("html/locals.html");
+const way = [
+    "locals",
+    "news",
+    "login",
+    "copyright",
+    "privacy",
+    "social",
+    "api",
+];
+
+for (let i = 0; i < way.length; i++) {
+
+    // console.log(way[i])
+
+    if (path.startsWith("/" + way[i]))
+        document.getElementById("main").innerHTML = load("html/" + way[i] + ".html");
 }
 
-if (path.startsWith("/news")) {
-    document.getElementById("main").innerHTML = load("html/news.html");
+let links = document.getElementById('header').getElementsByTagName('a');
+let links2 = document.getElementById('footer').getElementsByTagName('a')
+// links.concat(links2);
+
+function checkLinks() {
+
+    for (let i = 0; i < links.length; i++) {
+        if (path.replace(/[/]*/g, "") === links[i].getAttribute("href").replace("/", "")) {
+            links[i].className = "active";
+            return;
+        }
+    }
+
+    for (let i = 0; i < links2.length; i++) {
+        if (path.replace(/[/]*/g, "") === links2[i].getAttribute("href").replace("/", "")) {
+            links2[i].className = "active";
+            return;
+        }
+    }
 }
 
-if (path.startsWith("/login")) {
-    document.getElementById("main").innerHTML = load("html/login.html");
-}
-
-
+checkLinks();
 
 function closeModal() {
     document.getElementById("main").innerHTML = "";
