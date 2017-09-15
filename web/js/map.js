@@ -8,18 +8,70 @@ let center;
 
 function initMap() {
 
-    // const city = {lat: 37.5662684, lng: -122.39029697};
-    center = {lat: 59.9000, lng: 30.3000};
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 5,
-        center: center,
-        mapTypeId: 'mapStyle',
+    let mapOptions;
 
-        mapTypeControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: true
+    let mapCentre;
+
+    if (localStorage.getItem("mapLat") !== null &&
+        localStorage.getItem("mapLng") !== null &&
+        localStorage.getItem("mapZoom") !== null) {
+
+        mapOptions = {
+            center: new google.maps.LatLng(localStorage.mapLat,localStorage.mapLng),
+            zoom: parseInt(localStorage.mapZoom),
+            scaleControl: true,
+            mapTypeId: 'mapStyle',
+            mapTypeControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: true
+        };
+
+        console.log(mapOptions)
+
+    } else {
+
+        console.log("new localStorage mapOptions")
+
+        //Choose some default options
+        mapOptions = {
+            center: {lat: 59.9000, lng: 30.3000},
+            zoom: 5,
+            scaleControl: true,
+            mapTypeId: 'mapStyle',
+            mapTypeControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: true
+        };
+    }
+
+    // const city = {lat: 37.5662684, lng: -122.39029697};
+    // center = {lat: 59.9000, lng: 30.3000};
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    google.maps.event.addListener(map, "center_changed", function() {
+
+        //Set local storage variables.
+        mapCentre = map.getCenter();
+
+        localStorage.setItem("mapLat", mapCentre.lat());
+        localStorage.setItem("mapLng", mapCentre.lng());
+        localStorage.setItem("mapZoom", map.getZoom());
+
+        // console.log(localStorage)
     });
+
+    google.maps.event.addListener(map, "zoom_changed", function() {
+
+        //Set local storage variables.
+        mapCentre = map.getCenter();
+
+        localStorage.setItem("mapLat", mapCentre.lat());
+        localStorage.setItem("mapLng", mapCentre.lng());
+        localStorage.setItem("mapZoom", map.getZoom());
+    });
+
 
     // window.setInterval(function(){
 
