@@ -14,22 +14,13 @@ function login() {
     let username = fields[0].innerText;
     let password = fields[1].innerHTML;
 
-
+    closeModal();
 
     if (username === "duck" && password === "donald") {
 
         openPage('client');
         showData()
     }
-
-
-
-
-    closeModal();
-
-    // openPage('client');
-
-    // showData()
 }
 
 function showData() {
