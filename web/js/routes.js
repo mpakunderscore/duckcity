@@ -13,6 +13,7 @@ const way = [
     "privacy",
     "social",
     "api",
+    "client"
 ];
 
 let links = document.getElementById('header').getElementsByTagName('a');
@@ -24,7 +25,7 @@ let links2 = document.getElementById('footer').getElementsByTagName('a');
 
 function checkLinks(path) {
 
-    console.log(path.replace(/[/]*/g, ""))
+    // console.log(path.replace(/[/]*/g, ""))
 
     // alert(location);
 

@@ -17,6 +17,8 @@ app.use('/privacy', express.static(path.join(__dirname, 'web')));
 app.use('/social', express.static(path.join(__dirname, 'web')));
 app.use('/api', express.static(path.join(__dirname, 'web')));
 
+app.use('/client', express.static(path.join(__dirname, 'web')));
+
 let server = require('http').Server(app);
 
 let io = require('socket.io')(server);

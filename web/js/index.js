@@ -7,5 +7,37 @@ function load(href) {
 }
 
 function login() {
-    closeModal()
+
+    let fields = document.getElementById('login').getElementsByClassName('field');
+
+    // console.log(fields);
+    let username = fields[0].innerText;
+    let password = fields[1].innerHTML;
+
+
+
+    if (username === "duck" && password === "donald") {
+
+        openPage('client');
+        showData()
+    }
+
+
+
+
+    closeModal();
+
+    // openPage('client');
+
+    // showData()
+}
+
+function showData() {
+
+    // console.log(buffer)
+
+    let texts = document.getElementById('client').getElementsByClassName('field');
+    texts[0].innerText = buffer.npc.length;
+    texts[1].innerText = Object.keys(buffer.users).length
+
 }

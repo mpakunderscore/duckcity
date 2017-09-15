@@ -3,6 +3,7 @@
 
 let map;
 let markers = [];
+let buffer;
 
 let center;
 
@@ -27,7 +28,7 @@ function initMap() {
             fullscreenControl: true
         };
 
-        console.log(mapOptions)
+        // console.log(mapOptions)
 
     } else {
 
@@ -103,6 +104,8 @@ function initMap() {
 }
 
 function buildWebMap(map) {
+
+    buffer = map;
 
     let users = map.users;
 
