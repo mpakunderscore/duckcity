@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
 
         <meta charset="UTF-8">
@@ -7,18 +8,17 @@
 
         <link rel="icon"
               type="image/png"
-              href="images/quack_big2.png?v1">
+              href="images/favicon.png?v1">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!--<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/media.css">
 
         <script src="js/lib/socket.io.slim.js"></script>
 
-        <script src="js/index.js"></script>
         <script src="js/map.js"></script>
         <script src="js/client.js"></script>
 
@@ -34,105 +34,29 @@
 
     <body>
 
-    <!--<div id="login" class="menu">-->
+        <div id="column">
 
-        <!--<div class="text">-->
-            <!--<div>Real-time geolocation game / service, anonymous.</div>-->
-            <!--<div>Although, it is rather a platform. For many of things.</div>-->
-            <!--&lt;!&ndash;<div>Create your own story and explore.</div>&ndash;&gt;-->
-        <!--</div>-->
-
-        <!--<div class="buttons">-->
-            <!--<a onclick="saveDuck()">Login</a>-->
-            <!--&lt;!&ndash;<a class="delete" onclick="closeConstructor()">Delete</a>&ndash;&gt;-->
-            <!--<a class="close" onclick="closeConstructor()">Close</a>-->
-        <!--</div>-->
-
-    <!--</div>-->
-
-        <div id="about" class="menu">
-
-            <div class="text">
-                <div>Real-time geolocation game / service, anonymous.</div>
-                <div>Although, it is rather a platform. For many of things.</div>
-                <div>Create your own story and explore.</div>
+            <div id="header" class="block">
+                <div class="text"><a href="/">About</a></div>
+                <div class="text"><a href="/locals">Locals</a></div>
+                <div class="text"><a href="/news">News</a></div>
+                <div class="text"><a href="/login">Login</a></div>
             </div>
 
-            <div style="position: relative">
+            <div id="main"></div>
 
-                <img class="back"
-                     src="./images/back/day.png">
-
-                <img class="duck"
-                     src="images/quack_big2.png">
-
-            </div>
-
-            <div class="text">
-                <div>Place ducks on the map and write something inside.</div>
-                <!--<div>Right click on map.</div>-->
-                <div>Download app to find out what the others have written, but only if you are near the duck.</div>
-            </div>
-
-            <div class="buttons">
-
-                <a href="">Android</a>
-                and
-                <a href="">iOS</a>
-                <a class="close" onclick="closeAbout()">Close</a>
-
-            </div>
-
-        </div>
-
-        <div id="constructor" class="menu">
-
-            <div class="text" contenteditable="true" data-text="Title for new duck"></div>
-
-            <div class="text form" contenteditable="true" data-text="Description and main text"></div>
-
-            <div class="text form" contenteditable="true" data-text="Answer if needed"></div>
-
-            <!--<div class="text form"><a onclick="parentDuck()">Parent duck</a></div>-->
-
-            <!--<div class="text form" contenteditable="true" data-text="Visibility time"></div>-->
-
-            <!--<div class="text form" contenteditable="true" data-text="Start time"></div>-->
-
-            <div style="position: relative">
-
-                <img class="back"
-                     src="./images/back/night.png"
-                     onclick="nextBackground()">
-
-                <img class="duck"
-                     src="images/ducks/index.png"
-                     onclick="nextDuck()">
-            </div>
-
-            <div class="text description">
-                Click on duck or background to change.
-            </div>
-
-            <div class="buttons">
-                <a onclick="saveDuck()">Save</a>
-                <a class="delete" onclick="closeConstructor()">Delete</a>
-                <a class="close" onclick="closeConstructor()">Close</a>
-            </div>
-
-        </div>
-
-        <div id="business" class="menu">
-
-            <div class="text">
-                <div>Real-time geolocation game / service, anonymous.</div>
-                <div>Although, it is rather a platform. For many of things.</div>
-                <div>Create your own story and explore.</div>
+            <div id="footer" class="block">
+                <div class="text">Copyright</div>
+                <div class="text">Privacy policy</div>
+                <div class="text">(c)2017 forest.network</div>
             </div>
 
         </div>
 
         <div id="map"></div>
 
+        <script src="js/index.js"></script>
+
     </body>
+
 </html>

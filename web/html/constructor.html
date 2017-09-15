@@ -1,0 +1,36 @@
+<div id="constructor" class="block">
+
+    <div class="text" contenteditable="true" data-text="Title for new duck"></div>
+
+    <div class="text form" contenteditable="true" data-text="Description and main text"></div>
+
+    <div class="text form" contenteditable="true" data-text="Answer if needed"></div>
+
+    <!--<div class="text form"><a onclick="parentDuck()">Parent duck</a></div>-->
+
+    <!--<div class="text form" contenteditable="true" data-text="Visibility time"></div>-->
+
+    <!--<div class="text form" contenteditable="true" data-text="Start time"></div>-->
+
+    <div style="position: relative">
+
+        <img class="back"
+             src="./images/back/night.png"
+             onclick="nextBackground()">
+
+        <img class="duck"
+             src="images/ducks/index.png"
+             onclick="nextDuck()">
+    </div>
+
+    <div class="text description">
+        Click on duck or background to change.
+    </div>
+
+    <div class="buttons">
+        <a onclick="saveDuck()">Save</a>
+        <a class="delete" onclick="closeConstructor()">Delete</a>
+        <a class="close" onclick="closeConstructor()">Close</a>
+    </div>
+
+</div>

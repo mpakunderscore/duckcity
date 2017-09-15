@@ -1,10 +1,16 @@
 let path = window.location.href.toString().split(window.location.host)[1];
 
-if (path.startsWith("/business")) {
+document.getElementById("main").innerHTML = load("html/info.html");
 
-    closeAbout();
+if (path.startsWith("/locals")) {
 
-    openBusiness();
+    console.log("locals")
+
+    // closeAbout();
+
+    // openBusiness();
+
+    document.getElementById("main").innerHTML = load("html/locals.html");
 }
 
 
@@ -13,7 +19,7 @@ function closeAbout() {
 }
 
 function openBusiness() {
-    document.getElementById('business').style.display = 'block';
+    document.getElementById('locals').style.display = 'block';
 }
 
 function closeConstructor() {
@@ -28,7 +34,9 @@ function openConstructor(user, region) {
 
     closeAbout();
 
-    document.getElementById('constructor').style.display = 'block';
+    // document.getElementById('constructor').style.display = 'block';
+
+    document.getElementById("main").innerHTML = load("html/constructor.html");
 
     let fields = document.getElementById('constructor').getElementsByClassName('text');
 
@@ -157,4 +165,12 @@ function nextBackground() {
         }
 
     // alert("nextBackground");
+}
+
+function load(href) {
+
+    let request = new XMLHttpRequest();
+    request.open("GET", href, false);
+    request.send();
+    return request.responseText;
 }

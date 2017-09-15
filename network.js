@@ -8,7 +8,11 @@ let app = express();
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
 
-app.use('/business', express.static(path.join(__dirname, 'web')));
+app.use('/locals', express.static(path.join(__dirname, 'web')));
+
+app.use('/news', express.static(path.join(__dirname, 'web')));
+
+app.use('/login', express.static(path.join(__dirname, 'web')));
 
 let server = require('http').Server(app);
 
