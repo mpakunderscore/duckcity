@@ -195,6 +195,10 @@ body {
     text-align: center;
 }
 
+.field {
+    /*padding-top: 10px;*/
+}
+
 .form {
     padding-top: 10px;
 }

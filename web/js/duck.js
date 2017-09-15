@@ -12,7 +12,7 @@ function openConstructor(user, region) {
 
     document.getElementById("main").innerHTML = load("html/constructor.html");
 
-    let fields = document.getElementById('constructor').getElementsByClassName('field')[0];
+    let fields = document.getElementById('constructor').getElementsByClassName('field');
 
     let backImg = document.getElementById('constructor').getElementsByClassName('back')[0];
     let duckImg = document.getElementById('constructor').getElementsByClassName('duck')[0];
