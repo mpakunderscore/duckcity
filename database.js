@@ -33,11 +33,58 @@ let NPC = sequelize.define('npc', {
     longitude: Sequelize.FLOAT
 });
 
+// let NPC = sequelize.define('npc', {
+//
+//     title: Sequelize.STRING,
+//     description: Sequelize.TEXT,
+//     answer: Sequelize.STRING,
+//
+//     owner: Sequelize.STRING,
+//
+//     name: Sequelize.STRING,
+//     back: Sequelize.STRING,
+//
+//     latitude: Sequelize.FLOAT,
+//     longitude: Sequelize.FLOAT,
+//
+//     visibility:  Sequelize.STRING
+// });
+
+
 NPC.sync({force: false}).then(() => {
 
     // Table created
 
     // return generate();
+});
+
+let User = sequelize.define('user', {
+
+    title: Sequelize.STRING,
+    description: Sequelize.TEXT,
+    answer: Sequelize.STRING,
+
+    owner: Sequelize.STRING,
+
+    name: Sequelize.STRING,
+    back: Sequelize.STRING,
+
+    latitude: Sequelize.FLOAT,
+    longitude: Sequelize.FLOAT,
+
+    visibility:  Sequelize.STRING,
+
+    address: Sequelize.STRING,
+});
+
+let Client = sequelize.define('client', {
+
+    title: Sequelize.STRING,
+
+    email: Sequelize.STRING,
+    password: Sequelize.STRING,
+
+    balance: Sequelize.STRING,
 });
 
 let names = [

@@ -16,7 +16,7 @@ function login() {
 
     closeModal();
 
-    if (username === "duck" && password === "donald") {
+    if (username === "duck") {
 
         openPage('client');
         showData()

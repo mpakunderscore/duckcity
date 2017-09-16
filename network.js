@@ -107,5 +107,6 @@ function updateDuck(socket, duck) {
 exports.updateDuckSend = function (socket, duck) {
 
     // console.log("SEND DUCK broadcast")
-    socket.broadcast.emit('duck', JSON.stringify(duck));
+    // socket.broadcast.emit('duck', JSON.stringify(duck));
+    io.sockets.emit('duck', JSON.stringify(duck));
 }

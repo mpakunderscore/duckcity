@@ -23,12 +23,12 @@ function updateDuck(duck) {
 
     // console.log(duck);
 
-    setUser(duck);
+    // setUser(duck);
 
-    let some = duck;
-    some.marker = null;
+    // let some = duck;
+    // some.marker = null;
 
-    socket.emit('duck', JSON.stringify(some));
+    socket.emit('duck', JSON.stringify(clone(duck)));
 
     // duck.id = "";
     // setUser(duck);
@@ -65,3 +65,19 @@ socket.on('image', (user) => {
 socket.on('disconnected', (id) => {
     removeUser(id);
 });
+
+function clone(obj) {
+
+    if (null == obj || "object" != typeof obj)
+        return obj;
+
+    let copy = obj.constructor();
+    for (let attr in obj) {
+
+        // console.log(obj[attr])
+        if (obj.hasOwnProperty(attr) && "object" != typeof obj[attr])
+            copy[attr] = obj[attr];
+    }
+
+    return copy;
+}
