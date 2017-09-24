@@ -238,8 +238,26 @@ a.active {
     color: #4dd530;
 }
 
+.copyright {
+    line-height: 30px;
+    /*background-color: red;*/
+}
 
-img.copyright {
-    width: 100px;
-    /*background-color: #4affff;*/
+.copyright img {
+    width: 30px;
+    height: 30px;
+    /*background-color: red;*/
+    vertical-align: middle;
+    padding-right: 15px;
+    /*display: block;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+}
+
+.copyright a {
+    /*width: 30px;*/
+    /*height: 30px;*/
+    /*background-color: red;*/
 }
