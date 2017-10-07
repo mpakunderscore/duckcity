@@ -32,7 +32,7 @@ function initMap() {
 
     } else {
 
-        console.log("new localStorage mapOptions")
+        console.log("new localStorage mapOptions");
 
         //Choose some default options
         mapOptions = {
@@ -89,7 +89,7 @@ function initMap() {
 
     // }, 50);
 
-    map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyle, { name: 'Map style' }));
+    map.mapTypes.set('mapStyle', new google.maps.StyledMapType(mapStyleFirst, { name: 'Map style' }));
 
     google.maps.event.addListener(map, "rightclick", function(event) {
 
@@ -130,9 +130,9 @@ function createMarker(user, position) {
         // The origin for this image is (0, 0).
         origin: new google.maps.Point(0, 0),
         // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(35, 35),
+        anchor: new google.maps.Point(50, 50),
 
-        scaledSize: new google.maps.Size(70, 70)
+        scaledSize: new google.maps.Size(100, 100)
     };
 
     user.marker = new google.maps.Marker({

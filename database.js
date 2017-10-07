@@ -182,9 +182,10 @@ function buildDatabaseMap() {
             }));
         });
 
-        map.users['0'] = {
-            title: 'Test user',
-            description: 'Some text',
+        map.users['SOME SOCKET HASH ID HERE'] = {
+            id: 'SOME SOCKET HASH ID HERE',
+            title: 'Test server user',
+            description: 'Some text from test user here',
             name: 'goose',
             back: 'day',
             latitude: 59.0000,

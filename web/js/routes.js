@@ -4,6 +4,8 @@ console.log(path);
 
 document.getElementById("main").innerHTML = load("html/about.html");
 
+let about = localStorage.getItem("about");
+
 const way = [
     "about",
     "connect",
@@ -45,7 +47,7 @@ function checkLinks(path) {
     }
 
     for (let i = 0; i < links2.length; i++) {
-        if (path.replace(/[/]*/g, "") === links[i].textContent.toLowerCase()) {
+        if (path.replace(/[/]*/g, "") === links2[i].textContent.toLowerCase()) {
             links2[i].className = "active";
             return;
         }
@@ -72,10 +74,15 @@ function openPage(state) {
     window.history.pushState({}, null, "/");
 
     // window.history.replaceState({}, null, state);
-    if (state === "about")
+    if (state === "about") {
+
         window.history.pushState({}, null, "");
 
-    else window.history.pushState({}, null, state);
+        // if (about)
+            // return;
+            // closeModal();
+
+    } else window.history.pushState({}, null, state);
 
     // location.replace("/", "")
 
@@ -87,6 +94,14 @@ function openPage(state) {
 
 
 function closeModal() {
+
     document.getElementById("main").innerHTML = "";
-    // document.getElementById('about').style.display = 'none';
+    localStorage.setItem("about", true);
+}
+
+function closeAbout(block) {
+
+    // if ()
+
+    // closeModal();
 }

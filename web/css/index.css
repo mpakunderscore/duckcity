@@ -180,9 +180,9 @@ body {
 
 .duck {
     position: absolute;
-    height: 130px;
-    top: 50px;
-    left: 50px;
+    height: 200px;
+    top: 20px;
+    left: 10%;
     /*top: -100px;*/
     /*padding-bottom: 100px;*/
 
@@ -191,6 +191,14 @@ body {
     /*border-radius: 150px;*/
 
     /*filter: brightness(110%);*/
+
+    transition: left 7s, transform 2s;
+}
+
+.duck:hover {
+    /*left: 90%;*/
+    /*transform: scaleX(-1);*/
+    /*filter: invert(100%);*/
 }
 
 .description {
@@ -260,4 +268,14 @@ a.active {
     /*width: 30px;*/
     /*height: 30px;*/
     /*background-color: red;*/
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
